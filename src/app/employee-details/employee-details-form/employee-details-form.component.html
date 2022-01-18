@@ -1,0 +1,63 @@
+<head>
+    <style>
+        .registration {
+            background-color: #d11313;
+            text-align: center;
+            color: floralwhite;
+            font-size: 25px;
+        }
+        
+        button {
+            background-color: #d11313;
+            color: floralwhite;
+        }
+        
+        .main-div {
+            background-image: url('TechMTemplate.jpg');
+        }
+    </style>
+</head>
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+    <mat-card fxFlex="25">
+        <form fxLayoutAlign="stretch" fxLayout="column" novalidate #registrationform="ngForm" (ngSubmit)="onSubmit(registrationform)">
+
+
+            <div>
+                <mat-toolbar color="warn">Employee registration</mat-toolbar>
+                <br/>
+
+                <label>First Name :</label>
+                <input type="text" class="form-control form-control-lg" placeholder="First Name" name="firstName" #firstName="ngModel" [(ngModel)]="service.formData.firstName" required [class.invalid]="firstName.invalid && firstName.touched">
+
+                <br/>
+                <label>Last Name :</label>
+                <input type="text" class="form-control form-control-lg" placeholder="Last Name" name="lastName" #lastName="ngModel" [(ngModel)]="service.formData.lastName" required [class.invalid]="lastName.invalid && lastName.touched">
+
+                <br/>
+
+                <label>TechM_Id :</label>
+                <input type="number" class="form-control form-control-lg" placeholder="TechM Id" name="techmid" #techmid="ngModel" [(ngModel)]="service.formData.techmid" required max="999999" min="1000" [class.invalid]="techmid.invalid && techmid.touched">
+                <br/>
+
+                <label>Password :</label>
+                <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" #password="ngModel" [(ngModel)]="service.formData.password" required minlength="6" [class.invalid]="password.invalid && password.touched">
+
+                <br/> &nbsp;&nbsp;&nbsp;
+                <label>Role :</label>
+                <mat-form-field>
+
+                    <mat-label>Select Role</mat-label>
+                    <select matNativeControl name="role" #role="ngModel" [(ngModel)]="service.formData.role" id="role.s" required>
+            <option selected="selected" value="Admin"> Admin</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Developer">Developer</option>
+            <option value="Manager">Manager</option>
+       </select></mat-form-field><br/><br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                <button mat-raised-button type="submit" [disabled]="registrationform.invalid">Submit</button>
+
+            </div>
+
+
+        </form>
+    </mat-card>
+</div>
